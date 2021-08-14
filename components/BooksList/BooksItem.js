@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { UilStar, UilEllipsisV } from "@iconscout/react-unicons";
+
 export const BooksItem = () => {
   return (
     <div className="flex bg-white rounded-md py-3 pl-4 pr-2 h-36 w-full mb-4">
@@ -26,9 +28,11 @@ export const BooksItem = () => {
         </div>
       </div>
       <div>
-        <button className="text-primary">
-          <UilEllipsisV className="w-5 h-5" />
-        </button>
+        <Link href="/">
+          <button className="text-primary">
+            <UilEllipsisV className="w-5 h-5" />
+          </button>
+        </Link>
       </div>
     </div>
   );

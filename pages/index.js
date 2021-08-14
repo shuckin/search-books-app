@@ -2,7 +2,7 @@ import Head from "next/head";
 import BooksList from "../components/BooksList";
 import CategoryBooks from "../components/CategoryBooks/CategoryBooks";
 import Header from "../components/Header";
-import Recommended from "../components/Recommended";
+import Recommended from "../components/RecommendedList";
 import Search from "../components/Search";
 
 export default function Home() {
