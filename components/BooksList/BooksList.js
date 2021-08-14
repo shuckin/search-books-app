@@ -1,4 +1,4 @@
-import { BooksItem } from "./BooksItem"
+import { BooksItem } from "./BooksItem";
 
 export const BooksList = () => {
   return (
@@ -10,6 +10,7 @@ export const BooksList = () => {
         <BooksItem />
         <BooksItem />
         <BooksItem />
+        
       </div>
     </section>
   );

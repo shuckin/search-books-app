@@ -1,4 +1,5 @@
 import { RecommendedItem } from "./RecommendedItem";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export const Recommended = () => {
   return (
@@ -7,7 +8,17 @@ export const Recommended = () => {
         <h4 className="text-sm text-gray-dark font-medium">Recommended</h4>
       </div>
       <div>
-        <RecommendedItem />
+        <Swiper className="mySwiper" slidesPerView={1.5} spaceBetween={70}>
+          <SwiperSlide>
+            <RecommendedItem />
+          </SwiperSlide>
+          <SwiperSlide>
+            <RecommendedItem />
+          </SwiperSlide>
+          <SwiperSlide>
+            <RecommendedItem />
+          </SwiperSlide>
+        </Swiper>
       </div>
     </section>
   );

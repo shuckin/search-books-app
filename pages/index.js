@@ -16,8 +16,8 @@ export default function Home() {
       <main className="flex flex-col items-center justify-start w-full flex-1 bg-gray-light">
         <Search placeholder="The name of book" />
         <CategoryBooks />
-        <Recommended/>
-        <BooksList/>
+        <Recommended />
+        <BooksList />
       </main>
     </div>
   );
