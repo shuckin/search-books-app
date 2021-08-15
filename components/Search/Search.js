@@ -1,7 +1,7 @@
 import { UilSearch } from "@iconscout/react-unicons";
 export const Search = ({ ...rest }) => {
   return (
-    <div className="w-full px-5 pt-8 ">
+    <div className="w-full px-5 pt-8 lg:container">
       <div className="w-full flex items-center rounded-md bg-white">
         <input
           className="w-full h-12 outline-none border-none

@@ -3,7 +3,7 @@ import { UilApple, UilAndroid, UilAmazon } from "@iconscout/react-unicons";
 
 export default function CategoryBooks() {
   return (
-    <section className="w-full px-5 pt-8">
+    <section className="w-full px-5 pt-8 lg:container">
       <Swiper className="mySwiper" slidesPerView={3}>
         <SwiperSlide>
           <div className="w-24 h-24 bg-primary rounded-md shadow-xl flex flex-col items-center justify-center text-white mr-3">

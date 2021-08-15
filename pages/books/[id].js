@@ -9,10 +9,9 @@ export default function Book() {
 
   const { id } = router.query;
   const [book, setBook] = useState([]);
-  const APIKey = 'AIzaSyBxYsRC2RkOQGMr0yfr0nV5cgwxYQtSQ3c';
+  const APIKey = "AIzaSyBxYsRC2RkOQGMr0yfr0nV5cgwxYQtSQ3c";
   const baseURL = `https://www.googleapis.com/books/v1/volumes/${id}?key=${APIKey}`;
 
-  
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(baseURL);
@@ -22,8 +21,8 @@ export default function Book() {
   }, []);
 
   return (
-    <Layout title="feff">
-      <section className="w-full px-5 py-7">
+    <Layout title={book.title}>
+      <section className="w-full px-5 py-7 lg:container">
         <div className="bg-white w-full px-5 py-5 rounded-md shadow">
           <div className="flex mb-5">
             <img
@@ -84,7 +83,7 @@ export default function Book() {
             </div>
           </div>
           <div className="flex items-center justify-center mt-5">
-          <button className="flex items-center justify-center border-2 border-primary-light w-full py-3 text-primary-dark text-md font-medium rounded-md shadow-md hover:bg-primary hover:text-white hover:shadow-lg active:shadow hover:border-primary transition-all mr-3">
+            <button className="flex items-center justify-center border-2 border-primary-light w-full py-3 text-primary-dark text-md font-medium rounded-md shadow-md hover:bg-primary hover:text-white hover:shadow-lg active:shadow hover:border-primary transition-all mr-3">
               <UilLink className="mr-3" /> Link
             </button>
             <button className="flex items-center justify-center bg-primary-light border-primary-light border-2 w-full py-3 text-primary-dark text-md font-medium rounded-md shadow-md hover:bg-primary hover:text-white hover:shadow-lg active:shadow transition-all hover:border-primary ">
