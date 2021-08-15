@@ -1,21 +1,18 @@
-export const RecommendedItem = ({ img, title, author, category }) => {
+import { useRouter } from "next/router";
+export const RecommendedItem = ({ img, title, author, category, id }) => {
+  const router = useRouter();
   return (
-    <div className="shadow-md">
+    <div className="shadow-md" onClick={() => router.push(`/books/${id}`)}>
       <div className="flex bg-white rounded-md p-3 h-36 w-64 ">
-        <img
-          src="http://books.google.com/books/content?id=F1wgqlNi8AMC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
-          alt=""
-          width="80"
-          height="auto"
-        />
+        <img src={img} alt="" width="80" height="auto" />
         <div className="flex flex-col ml-3 justify-between h-full">
-          <span className="text-gray-dark font-medium text-sm">
-            Algernon, Charlie, and I
+          <span className="text-gray-dark font-medium text-sm max-h-10 overflow-hidden">
+            {title}
           </span>
-          <span className="text-gray font-medium text-sm mb-3">
-            Daniel Keyes
+          <span className="text-gray font-medium text-sm mb-3 max-h-10 overflow-hidden">
+            {author}
           </span>
-          <span className="text-gray text-sm">Biography & Autobiography</span>
+          <span className="text-gray text-sm">{category}</span>
         </div>
       </div>
     </div>
