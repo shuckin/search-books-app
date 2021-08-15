@@ -82,7 +82,7 @@ export default function Book() {
             </div>
           </div>
           <div className="flex items-center justify-center mt-5">
-            <button className="flex items-center justify-center border-2 border-primary-light w-full py-3 text-primary-dark text-md font-medium rounded-md shadow-md hover:bg-primary hover:text-white hover:shadow-lg active:shadow hover:border-primary transition-all mr-3">
+          <button className="flex items-center justify-center border-2 border-primary-light w-full py-3 text-primary-dark text-md font-medium rounded-md shadow-md hover:bg-primary hover:text-white hover:shadow-lg active:shadow hover:border-primary transition-all mr-3">
               <UilLink className="mr-3" /> Link
             </button>
             <button className="flex items-center justify-center bg-primary-light border-primary-light border-2 w-full py-3 text-primary-dark text-md font-medium rounded-md shadow-md hover:bg-primary hover:text-white hover:shadow-lg active:shadow transition-all hover:border-primary ">
