@@ -10,7 +10,7 @@ export const Header = () => {
   const router = useRouter();
 
   return (
-    <div className="w-full flex flex-wrap px-5 pt-3 bg-white">
+    <div className="w-full flex flex-wrap px-5 pt-3 bg-white shadow-xl">
       <div className="flex items-center justify-between w-full mb-3">
         <div>
           <button
@@ -34,7 +34,11 @@ export const Header = () => {
       <div className="flex w-full items-center justify-around">
         <div>
           <button
-            className="font-medium text-gray-dark pb-1"
+            className={
+              router.pathname == "/"
+                ? "font-medium text-gray-dark pb-1"
+                : "font-medium text-gray pb-1"
+            }
             onClick={() => router.push("/")}
           >
             Library
@@ -49,10 +53,13 @@ export const Header = () => {
             ></div>
           </div>
         </div>
-
         <div>
           <button
-            className="font-medium text-gray pb-1"
+            className={
+              router.pathname == "/favoritesw"
+                ? "font-medium text-gray-dark pb-1"
+                : "font-medium text-gray pb-1"
+            }
             onClick={() => router.push("/favorites")}
           >
             Favorits

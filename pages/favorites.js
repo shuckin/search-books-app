@@ -1,18 +1,5 @@
-import Head from "next/head";
-import Header from "../components/Header";
-
+import Layout from "../components/Layout";
 
 export default function Favorites() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen overflow-hidden">
-      <Head>
-        <title>Favorites</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
-      <main className="flex flex-col items-center justify-start w-full flex-1 bg-gray-light">
-        
-      </main>
-    </div>
-  );
+  return <Layout title={"Favorite"}></Layout>;
 }
