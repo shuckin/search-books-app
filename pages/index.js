@@ -9,6 +9,7 @@ import Search from "../components/Search";
 export default function Home({ data }) {
   const [keyword, setKeyword] = useState();
   const [hidden, setHidden] = useState(false);
+  const [books, setBooks] = useState([]);
   const APIkey = "AIzaSyBxYsRC2RkOQGMr0yfr0nV5cgwxYQtSQ3c";
   const baseURL = "https://www.googleapis.com/books/v1/volumes";
 
@@ -23,6 +24,25 @@ export default function Home({ data }) {
     setKeyword(searchWord);
     setHidden(true);
   };
+
+  useEffect(() => {
+    axios.defaults.baseURL = "https://www.googleapis.com/books/v1/volumes";
+    const APIkey = "AIzaSyBxYsRC2RkOQGMr0yfr0nV5cgwxYQtSQ3c";
+    const baseURL = "https://www.googleapis.com/books/v1/volumes";
+    const paramsURL = keyword
+      ? `${baseURL}?q=${keyword}:keyes&key=${APIkey}`
+      : `${baseURL}?q=russia:keyes&key=${APIkey}`;
+
+    const getData = () => {
+      setBooks({ loading: true });
+      axios
+        .get(paramsURL)
+        .then(({ data: data }) =>
+          setBooks({ loading: false, data: data.items })
+        );
+    };
+    getData();
+  }, [setBooks]);
 
   return (
     <Layout title="Search Books App">
