@@ -9,8 +9,10 @@ export default function Book() {
 
   const { id } = router.query;
   const [book, setBook] = useState([]);
-  const baseURL = `https://www.googleapis.com/books/v1/volumes/${id}`;
+  const APIKey = 'AIzaSyBxYsRC2RkOQGMr0yfr0nV5cgwxYQtSQ3c';
+  const baseURL = `https://www.googleapis.com/books/v1/volumes/${id}?key=${APIKey}`;
 
+  
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(baseURL);
@@ -59,7 +61,7 @@ export default function Book() {
             <div className="grid grid-cols-20 gap-3">
               <div className="flex justify-between">
                 <div className="text-gray-dark font-medium">Categories:</div>
-                <div>{book.categories}</div>
+                <div className="">{book.categories}</div>
               </div>
               <div className="flex justify-between">
                 <div className="text-gray-dark font-medium">Page:</div>

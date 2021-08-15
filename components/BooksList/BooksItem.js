@@ -6,16 +6,16 @@ export const BooksItem = ({ img, title, author, category, id }) => {
   const router = useRouter();
   return (
     <div
-      className="flex bg-white rounded-md py-3 pl-4 pr-4 h-36 w-full mb-4 justify-between "
+      className="flex bg-white rounded-md py-3 pl-4 pr-4 h-36 w-full mb-4 justify-between cursor-pointer"
       onClick={() => router.push(`/books/${id}`)}
     >
       <img src={img} alt="" width="80" height="auto" />
       <div className="flex flex-col ml-5 justify-between h-full">
         <div>
-          <span className="text-gray-dark font-medium text-sm block">
+          <span className="text-gray-dark font-medium text-sm block max-h-10 overflow-hidden">
             {title}
           </span>
-          <span className="text-gray font-medium text-sm mb-2 block">
+          <span className="text-gray font-medium text-sm mb-2 block max-h-10 overflow-hidden">
             {author}
           </span>
         </div>
