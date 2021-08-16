@@ -8,40 +8,38 @@ import Search from "../components/Search";
 import Loading from "../components/Loading";
 
 export default function Home() {
-  const [keyword, setKeyword] = useState();
-  const [hidden, setHidden] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [keyword, setKeyword] = useState("Ray Bradbury");
   const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const APIkey = "AIzaSyBxYsRC2RkOQGMr0yfr0nV5cgwxYQtSQ3c";
+  const baseURL = "https://www.googleapis.com/books/v1/volumes";
 
-  const handleFilter = (e) => {
-    const searchWord = e.target.value.toLowerCase();
-    setKeyword(searchWord);
-    setHidden(true);
-  };
+  console.log(books);
 
-  useEffect(() => {
-    const APIkey = "AIzaSyBxYsRC2RkOQGMr0yfr0nV5cgwxYQtSQ3c";
-    const baseURL = "https://www.googleapis.com/books/v1/volumes";
-    const paramsURL = `${baseURL}?q=${keyword}:keyes&key=${APIkey}`;
-
-    const getDataResult = async () => {
-      const res = await axios(paramsURL);
-      setIsLoading(false);
-      setBooks(res.data.items);
-    };
-
-    getDataResult();
-  }, [setBooks]);
+  useEffect(async () => {
+    setIsLoading(true);
+    const res = await axios.get(
+      `${baseURL}?q=${keyword ? keyword : "Stephen Kin"}&key=${APIkey}`
+    );
+    setBooks(res.data.items);
+    setIsLoading(false);
+  }, [keyword]);
 
   return (
     <Layout title="Search Books App">
-      <Search placeholder="The name of book" onChange={handleFilter} />
+      <Search
+        type="text"
+        placeholder="The name of book"
+        onChange={(e) => setKeyword(e.target.value.toLowerCase())}
+        value={keyword}
+        autoFocus
+      />
       {isLoading ? (
         <Loading />
       ) : (
         <>
-          <CategoryBooks isHidden={hidden} />
-          <Recommended books={books} isHidden={hidden} />
+          <CategoryBooks books={books} isHidden={keyword} />
+          <Recommended books={books} isHidden={keyword} />
           <BooksList books={books} />
         </>
       )}

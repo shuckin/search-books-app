@@ -32,7 +32,7 @@ export const Header = () => {
   };
 
   return (
-    <div className="w-full flex flex-wrap px-5 pt-3 bg-white shadow-xl dark:bg-primary">
+    <div className="w-full flex flex-wrap px-5 pt-3 bg-white shadow-md dark:bg-primary z-50">
       <div className="flex items-center justify-between w-full mb-3 ">
         <div>
           <button

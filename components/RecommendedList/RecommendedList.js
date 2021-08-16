@@ -2,7 +2,7 @@ import { RecommendedItem } from "./RecommendedItem";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export const Recommended = ({ books, isHidden }) => {
-  return isHidden ? (
+  return !isHidden == "Ray Bradbury" ? (
     ""
   ) : (
     <section className="w-full px-5 pt-8 lg:container">
@@ -11,17 +11,31 @@ export const Recommended = ({ books, isHidden }) => {
       </div>
       <div>
         <Swiper className="mySwiper" slidesPerView={1.5} spaceBetween={70}>
-          {books.map((book) => (
-            <SwiperSlide key={book.etag}>
-              <RecommendedItem
-                id={book.id}
-                img={book.volumeInfo.imageLinks.smallThumbnail}
-                title={book.volumeInfo.title}
-                category={book.volumeInfo.categories}
-                author={book.volumeInfo.authors}
-              />
-            </SwiperSlide>
-          ))}
+          {books.map((book) => {
+            const {
+              etag,
+              id,
+              volumeInfo: {
+                title,
+                authors,
+                imageLinks: { thumbnail },
+                categories,
+                averageRating,
+              },
+            } = book;
+            return (
+              <SwiperSlide key={etag}>
+                <RecommendedItem
+                  id={id}
+                  title={title}
+                  img={thumbnail ? thumbnail : null}
+                  author={authors}
+                  category={categories}
+                  rating={averageRating}
+                />
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
     </section>
