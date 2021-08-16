@@ -15,17 +15,22 @@ export const BooksList = ({ books }) => {
             volumeInfo: {
               title,
               authors,
-              imageLinks: { thumbnail },
+              imageLinks,
               categories,
               averageRating,
             },
           } = book;
+
           return (
             <BooksItem
               key={etag}
               id={id}
               title={title}
-              img={thumbnail ? thumbnail : null}
+              img={
+                imageLinks
+                  ? imageLinks.thumbnail
+                  : "https://via.placeholder.com/"
+              }
               author={authors}
               category={categories}
               rating={averageRating}

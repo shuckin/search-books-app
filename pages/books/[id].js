@@ -14,6 +14,7 @@ export default function Book() {
   const APIKey = "AIzaSyBxYsRC2RkOQGMr0yfr0nV5cgwxYQtSQ3c";
   const baseURL = `https://www.googleapis.com/books/v1/volumes/${id}?key=${APIKey}`;
 
+  console.log(baseURL);
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(baseURL);
@@ -28,11 +29,20 @@ export default function Book() {
       {isLoading ? (
         <Loading />
       ) : (
-        <section className="w-full px-5 py-7 lg:container">
+        <section className="w-full px-5 py-7 lg:container md:grid md:grid-cols-16 lg:gap-5">
+          <div className="bg-white px-5 py-5 rounded-md shadow">
+            <img
+              src={
+                book.imageLinks
+                  ? book.imageLinks.small
+                  : "https://via.placeholder.com/"
+              }
+              alt={book.title}
+            />
+          </div>
           <div className="bg-white w-full px-5 py-5 rounded-md shadow">
             <div className="flex mb-5">
-              <img src="" alt={book.title} width="100" height="auto" />
-              <div className="flex flex-col ml-5 justify-between h-full">
+              <div className="flex flex-col justify-between h-full">
                 <div>
                   <span className="text-gray-dark font-medium text-xl block max-h-14 overflow-hidden">
                     {book.title}
@@ -44,18 +54,20 @@ export default function Book() {
                 <span className="text-gray text-md block max-h-12 overflow-hidden">
                   {book.categories}
                 </span>
-                <div className="flex items-center justify-start">
-                  <div className="flex text-primary mr-3">
-                    <UilStar className="w-4 h-4" />
-                    <UilStar className="w-4 h-4" />
-                    <UilStar className="w-4 h-4" />
-                    <UilStar className="w-4 h-4" />
-                    <UilStar className="w-4 h-4" />
+                {book.averageRating && (
+                  <div className="flex items-center justify-start">
+                    <div className="flex text-primary mr-3">
+                      <UilStar className="w-4 h-4" />
+                      <UilStar className="w-4 h-4" />
+                      <UilStar className="w-4 h-4" />
+                      <UilStar className="w-4 h-4" />
+                      <UilStar className="w-4 h-4" />
+                    </div>
+                    <div className="text-gray-dark text-md">
+                      {book.averageRating}
+                    </div>
                   </div>
-                  <div className="text-gray-dark text-md">
-                    {book.averageRating}
-                  </div>
-                </div>
+                )}
               </div>
             </div>
             <div className="text-sm text-gray">

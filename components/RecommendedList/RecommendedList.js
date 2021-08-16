@@ -18,7 +18,7 @@ export const Recommended = ({ books, isHidden }) => {
               volumeInfo: {
                 title,
                 authors,
-                imageLinks: { thumbnail },
+                imageLinks,
                 categories,
                 averageRating,
               },
@@ -28,7 +28,11 @@ export const Recommended = ({ books, isHidden }) => {
                 <RecommendedItem
                   id={id}
                   title={title}
-                  img={thumbnail ? thumbnail : null}
+                  img={
+                    imageLinks
+                      ? imageLinks.thumbnail
+                      : "https://via.placeholder.com/"
+                  }
                   author={authors}
                   category={categories}
                   rating={averageRating}

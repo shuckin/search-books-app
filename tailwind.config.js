@@ -3,7 +3,12 @@ module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class", // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        16: "1fr 1.9fr 0.1fr;",
+        17: "0.6fr 1.4fr;",
+      },
+    },
     container: {
       center: true,
     },

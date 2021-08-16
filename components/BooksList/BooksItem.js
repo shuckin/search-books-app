@@ -6,11 +6,13 @@ export const BooksItem = ({ img, title, author, category, id, rating }) => {
   const router = useRouter();
   return (
     <div
-      className="flex bg-white rounded-md py-3 pl-4 pr-4 h-36 lg:h-48 w-full mb-4 justify-between cursor-pointer shadow hover:shadow-md"
+      className="grid grid-cols-16 gap-2 bg-white rounded-md py-3 pl-4 pr-4 h-36 lg:h-48 w-full mb-4 cursor-pointer shadow hover:shadow-md"
       onClick={() => router.push(`/books/${id}`)}
     >
-      {img && <img src={img} alt="" width="80" height="auto" />}
-      <div className="flex flex-col ml-5 justify-start h-full">
+      <div className="w-20 h-full bg-auto overflow-hidden">
+        {img && <img src={img} alt="" className="w-full h-full " />}
+      </div>
+      <div className="flex flex-col justify-start h-full">
         <div>
           <span className="text-gray-dark font-medium text-sm block max-h-10 overflow-hidden">
             {title}
@@ -33,7 +35,7 @@ export const BooksItem = ({ img, title, author, category, id, rating }) => {
           </div>
         )}
       </div>
-      <div>
+      <div className="">
         <Link href="/">
           <button className="text-primary">
             <UilEllipsisV className="w-5 h-5" />
