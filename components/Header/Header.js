@@ -1,5 +1,5 @@
-import { UilBars, UilBell, UilTimes } from "@iconscout/react-unicons";
-import { useState } from "react";
+import { UilBars, UilMoon, UilTimes, UilSun } from "@iconscout/react-unicons";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
@@ -7,14 +7,36 @@ import Logo from "../../assets/img/logo.svg";
 
 export const Header = () => {
   const [hidden, setHidden] = useState(false);
+  const [theme, setTheme] = useState("light");
+  const [darkMode, setMode] = useState(false);
   const router = useRouter();
 
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      "data-theme",
+      localStorage.getItem("theme")
+    );
+
+    setTheme(localStorage.getItem("theme"));
+  }, []);
+
+  const switchTheme = () => {
+    theme === "light" ? saveTheme("dark") : saveTheme("light");
+    setMode(!darkMode);
+  };
+
+  const saveTheme = (theme) => {
+    setTheme(theme);
+    localStorage.setItem("theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
+  };
+
   return (
-    <div className="w-full flex flex-wrap px-5 pt-3 bg-white shadow-xl ">
+    <div className="w-full flex flex-wrap px-5 pt-3 bg-white shadow-xl dark:bg-primary">
       <div className="flex items-center justify-between w-full mb-3 ">
         <div>
           <button
-            className="text-primary "
+            className="text-primary  outline-none lg:hidden"
             onClick={() => {
               setHidden(!hidden);
             }}
@@ -26,8 +48,12 @@ export const Header = () => {
           <Image src={Logo} alt="Picture of the author" />
         </div>
         <div>
-          <button className="text-primary">
-            <UilBell className="w-7 h-7" />
+          <button className="text-primary outline-none">
+            {darkMode ? (
+              <UilSun className="w-7 h-7" onClick={switchTheme} />
+            ) : (
+              <UilMoon className="w-7 h-7" onClick={switchTheme} />
+            )}
           </button>
         </div>
       </div>

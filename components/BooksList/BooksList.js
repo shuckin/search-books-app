@@ -1,6 +1,6 @@
 import { BooksItem } from "./BooksItem";
 
-export const BooksList = (props) => {
+export const BooksList = ({ books }) => {
   return (
     <section className="w-full px-5 pt-8 lg:container">
       <div className="flex items-center justify-between w-full mb-2">
@@ -8,7 +8,7 @@ export const BooksList = (props) => {
         <div className="text-sm text-gray-dark font-medium"></div>
       </div>
       <div className="grid lg:grid-rows-4 lg:grid-cols-4 md:grid-rows-2 md:grid-cols-2 md:gap-3">
-        {props.books.map((book) => (
+        {books.map((book) => (
           <BooksItem
             key={book.etag}
             id={book.id}

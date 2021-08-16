@@ -5,19 +5,13 @@ import CategoryBooks from "../components/CategoryBooks/CategoryBooks";
 import Layout from "../components/Layout";
 import Recommended from "../components/RecommendedList";
 import Search from "../components/Search";
+import Loading from "../components/Loading";
 
-export default function Home({ data }) {
+export default function Home() {
   const [keyword, setKeyword] = useState();
   const [hidden, setHidden] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [books, setBooks] = useState([]);
-  const APIkey = "AIzaSyBxYsRC2RkOQGMr0yfr0nV5cgwxYQtSQ3c";
-  const baseURL = "https://www.googleapis.com/books/v1/volumes";
-
-  const paramsURL = keyword
-    ? `${baseURL}?q=${keyword}:keyes&key=${APIkey}`
-    : `${baseURL}?q=russia:keyes&key=${APIkey}`;
-
-  console.log(paramsURL);
 
   const handleFilter = (e) => {
     const searchWord = e.target.value.toLowerCase();
@@ -26,47 +20,31 @@ export default function Home({ data }) {
   };
 
   useEffect(() => {
-    axios.defaults.baseURL = "https://www.googleapis.com/books/v1/volumes";
     const APIkey = "AIzaSyBxYsRC2RkOQGMr0yfr0nV5cgwxYQtSQ3c";
     const baseURL = "https://www.googleapis.com/books/v1/volumes";
-    const paramsURL = keyword
-      ? `${baseURL}?q=${keyword}:keyes&key=${APIkey}`
-      : `${baseURL}?q=russia:keyes&key=${APIkey}`;
+    const paramsURL = `${baseURL}?q=${keyword}:keyes&key=${APIkey}`;
 
-    const getData = () => {
-      setBooks({ loading: true });
-      axios
-        .get(paramsURL)
-        .then(({ data: data }) =>
-          setBooks({ loading: false, data: data.items })
-        );
+    const getDataResult = async () => {
+      const res = await axios(paramsURL);
+      setIsLoading(false);
+      setBooks(res.data.items);
     };
-    getData();
+
+    getDataResult();
   }, [setBooks]);
 
   return (
     <Layout title="Search Books App">
       <Search placeholder="The name of book" onChange={handleFilter} />
-      {!hidden && (
+      {isLoading ? (
+        <Loading />
+      ) : (
         <>
-          <CategoryBooks />
-          <Recommended books={data.items} />
+          <CategoryBooks isHidden={hidden} />
+          <Recommended books={books} isHidden={hidden} />
+          <BooksList books={books} />
         </>
       )}
-      <BooksList books={data.items} />
     </Layout>
   );
 }
-
-export const getStaticProps = async (keyword) => {
-  const APIkey = "AIzaSyBxYsRC2RkOQGMr0yfr0nV5cgwxYQtSQ3c";
-  const baseURL = "https://www.googleapis.com/books/v1/volumes";
-  const res = await fetch(`${baseURL}?q=harry-potter:keyes&key=${APIkey}`);
-  const data = await res.json();
-
-  return {
-    props: {
-      data,
-    },
-  };
-};
