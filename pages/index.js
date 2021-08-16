@@ -14,8 +14,6 @@ export default function Home() {
   const APIkey = "AIzaSyBxYsRC2RkOQGMr0yfr0nV5cgwxYQtSQ3c";
   const baseURL = "https://www.googleapis.com/books/v1/volumes";
 
-  console.log(books);
-
   useEffect(async () => {
     setIsLoading(true);
     const res = await axios.get(
@@ -32,7 +30,6 @@ export default function Home() {
         placeholder="The name of book"
         onChange={(e) => setKeyword(e.target.value.toLowerCase())}
         value={keyword}
-        autoFocus
       />
       {isLoading ? (
         <Loading />

@@ -7,7 +7,7 @@ export const BooksList = ({ books }) => {
         <h4 className="text-sm text-gray-dark font-medium">Result</h4>
         <div className="text-sm text-gray-dark font-medium"></div>
       </div>
-      <div className="grid lg:grid-rows-4 lg:grid-cols-4 md:grid-rows-2 md:grid-cols-2 md:gap-3">
+      <div className="grid lg:grid-rows-4 lg:grid-cols-4 md:grid-rows-2 md:grid-cols-2 md:gap-3 lg:gap-7">
         {books.map((book) => {
           const {
             etag,

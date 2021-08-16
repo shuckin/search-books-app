@@ -1,10 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function CategoryBooks({ isHidden, books }) {
   const router = useRouter();
-  return !isHidden == "Ray Bradbury" ? (
+  return !isHidden ? (
     ""
   ) : (
     <section className="w-full px-5 pt-8 lg:container">

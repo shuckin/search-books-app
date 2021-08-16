@@ -2,7 +2,7 @@ import { RecommendedItem } from "./RecommendedItem";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export const Recommended = ({ books, isHidden }) => {
-  return !isHidden == "Ray Bradbury" ? (
+  return !isHidden ? (
     ""
   ) : (
     <section className="w-full px-5 pt-8 lg:container">

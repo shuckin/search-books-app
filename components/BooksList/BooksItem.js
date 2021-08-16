@@ -6,7 +6,7 @@ export const BooksItem = ({ img, title, author, category, id, rating }) => {
   const router = useRouter();
   return (
     <div
-      className="flex bg-white rounded-md py-3 pl-4 pr-4 h-36 w-full mb-4 justify-between cursor-pointer shadow hover:shadow-md"
+      className="flex bg-white rounded-md py-3 pl-4 pr-4 h-36 lg:h-48 w-full mb-4 justify-between cursor-pointer shadow hover:shadow-md"
       onClick={() => router.push(`/books/${id}`)}
     >
       {img && <img src={img} alt="" width="80" height="auto" />}
