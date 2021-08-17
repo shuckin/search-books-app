@@ -1,8 +1,16 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { UilStar, UilEllipsisV } from "@iconscout/react-unicons";
+import { UilStar, UilEllipsisV, UilTrashAlt } from "@iconscout/react-unicons";
 
-export const BooksItem = ({ img, title, author, category, id, rating }) => {
+export const BooksItem = ({
+  img,
+  title,
+  author,
+  category,
+  id,
+  rating,
+  handleDeliteDB,
+}) => {
   const router = useRouter();
   return (
     <div
@@ -21,7 +29,9 @@ export const BooksItem = ({ img, title, author, category, id, rating }) => {
             {author}
           </span>
         </div>
-        <span className="text-gray text-sm">{category}</span>
+        <span className="text-gray text-sm  block max-h-10 overflow-hidden">
+          {category}
+        </span>
         {rating && (
           <div className="flex items-center justify-start">
             <div className="flex text-primary mr-3">
@@ -37,10 +47,18 @@ export const BooksItem = ({ img, title, author, category, id, rating }) => {
       </div>
       <div className="">
         <Link href="/">
-          <button className="text-primary">
+          <button className="text-primary hover:text-gray-dark">
             <UilEllipsisV className="w-5 h-5" />
           </button>
         </Link>
+        {handleDeliteDB && (
+          <button className="text-primary hover:text-gray-dark">
+            <UilTrashAlt
+              className="w-5 h-5"
+              onClick={(e) => handleDeliteDB(e)}
+            />
+          </button>
+        )}
       </div>
     </div>
   );

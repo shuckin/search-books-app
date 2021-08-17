@@ -17,7 +17,7 @@ export default function Home() {
   useEffect(async () => {
     setIsLoading(true);
     const res = await axios.get(
-      `${baseURL}?q=${keyword ? keyword : "Stephen Kin"}&key=${APIkey}`
+      `${baseURL}?q=${keyword ? keyword : "Stephen Kin"}`
     );
     setBooks(res.data.items);
     setIsLoading(false);

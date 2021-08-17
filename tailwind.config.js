@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         16: "1fr 1.9fr 0.1fr;",
-        17: "0.6fr 1.4fr;",
+        17: "0.5fr 1.5fr;",
       },
     },
     container: {
