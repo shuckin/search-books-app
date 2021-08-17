@@ -12,7 +12,7 @@
 5. DB Favorites Page - mockapi.oi
 
 ## **Screenshot**
-![](assets/img/Screenshot-1.png)
+![](assets/img/Screenshot-4.png)
 ---
 ![](assets/img/Screenshot-2.png)
 ---
