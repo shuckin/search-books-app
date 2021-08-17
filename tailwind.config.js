@@ -1,9 +1,17 @@
 module.exports = {
   mode: "jit",
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        16: "1fr 1.9fr 0.1fr;",
+        17: "0.5fr 1.5fr;",
+      },
+    },
+    container: {
+      center: true,
+    },
     colors: {
       primary: {
         light: "#B7A1F6",

@@ -9,7 +9,7 @@ export const Layout = ({ title, children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main className="flex flex-col items-center justify-start w-full flex-1 bg-gray-light">
+      <main className="flex flex-col items-center justify-start w-full flex-1 bg-gray-light ">
         {children}
       </main>
       <footer className="flex items-center justify-center w-full border-t bg-blue-500 px-5 py-3 text-white bg-primary">

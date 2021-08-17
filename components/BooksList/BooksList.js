@@ -1,36 +1,39 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
 import { BooksItem } from "./BooksItem";
 
-export const BooksList = () => {
-  const [books, setBooks] = useState([]);
-  const baseURL =
-    "https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyBxYsRC2RkOQGMr0yfr0nV5cgwxYQtSQ3c";
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(baseURL);
-      setBooks(result.data.items);
-    };
-    fetchData();
-  }, []);
-
+export const BooksList = ({ books }) => {
   return (
-    <section className="w-full px-5 pt-8">
+    <section className="w-full px-5 pt-8 lg:container">
       <div className="flex items-center justify-between w-full mb-2">
         <h4 className="text-sm text-gray-dark font-medium">Result</h4>
         <div className="text-sm text-gray-dark font-medium"></div>
       </div>
-      <div>
-        {books.map((books) => {
+      <div className="grid lg:grid-rows-4 lg:grid-cols-4 md:grid-rows-2 md:grid-cols-2 md:gap-3 lg:gap-7">
+        {books.map((book) => {
+          const {
+            etag,
+            id,
+            volumeInfo: {
+              title,
+              authors,
+              imageLinks,
+              categories,
+              averageRating,
+            },
+          } = book;
+
           return (
             <BooksItem
-              key={books.etag}
-              id={books.id}
-              title={books.volumeInfo.title}
-              img={books.volumeInfo.imageLinks.smallThumbnail}
-              author={books.volumeInfo.authors}
-              category={books.volumeInfo.categories}
+              key={etag}
+              id={id}
+              title={title}
+              img={
+                imageLinks
+                  ? imageLinks.thumbnail
+                  : "https://via.placeholder.com/"
+              }
+              author={authors}
+              category={categories}
+              rating={averageRating}
             />
           );
         })}
