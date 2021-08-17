@@ -1,5 +1,4 @@
 # Search Books App
----
 ## _Links_
 [GitHub Repository](https://github.com/shuckin2017/search-books-app)
 
