@@ -9,3 +9,17 @@
 2. Tailwind.css
 3. Google Books Api
 4. Axios
+5. DB Favorites Page - mockapi.oi
+
+## **Screenshot**
+![](https://search-books-app-3w61skwok-shuckin2017.vercel.app/)
+
+
+## Installation
+
+```sh
+Clone the Repo
+Open the Repo
+npm i
+npm run dev
+```
