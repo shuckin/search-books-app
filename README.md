@@ -12,7 +12,7 @@
 5. DB Favorites Page - mockapi.oi
 
 ## **Screenshot**
-![](https://search-books-app-3w61skwok-shuckin2017.vercel.app/)
+![](https://api.pikwy.com/web/611b62bef631bf166a056135.jpg)
 
 
 ## Installation
